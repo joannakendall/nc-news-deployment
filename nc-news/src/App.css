@@ -24,6 +24,18 @@ ul {
   list-style-type: none;
 }
 
+@media only screen and (max-width: 600px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  .nav{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}
+
 
 /* .App-logo {
   height: 40vmin;

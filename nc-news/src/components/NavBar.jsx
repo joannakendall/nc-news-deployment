@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from '@reach/router';
 import * as api from '../utils/api'
 
+
 class NavBar extends Component {
     state= {
         topics: [],

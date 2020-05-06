@@ -1,47 +1,69 @@
-import React, { Component } from 'react';
-import * as api from '../utils/api'
-import Loader from './Loader';
-import {Link} from '@reach/router';
-import VoteUpdater from './VoteUpdater';
+import React, { Component } from "react";
+import * as api from "../utils/api";
+import Loader from "./Loader";
+import { Link } from "@reach/router";
+import VoteUpdater from "./VoteUpdater";
+import ErrorDisplayer from "./ErrorDisplayer";
 
 class Articles extends Component {
-    state = {
-        articles: [],
-        isLoading: true,
+  state = {
+    articles: [],
+    isLoading: true,
+    value: 'votes',
+    err: '',
+  };
+  componentDidMount() {
+    this.fetchArticles();
+  }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.topic !== this.props.topic) {
+      this.fetchArticles();
     }
-    componentDidMount(){
+    if(prevState.value !== this.state.value){
         this.fetchArticles()
     }
-    componentDidUpdate(prevProps, prevState) {
-        if(prevProps.topic !== this.props.topic){
-            this.fetchArticles()
-        }
-    }
-    fetchArticles() {
-        const {topic} = this.props
-        api.getArticles(topic).then(articles => {
-            this.setState({articles, isLoading: false})
-        })
-    }
-    render() {
-        const {articles, isLoading} = this.state
-        if(isLoading) return <Loader/>
-        return (
-            <ul>
-            <button>Sort By Votes</button>
-            <button>Sort By Comment Count</button>
-            <button>Sort By Date</button>
-               {articles.map(({article_id, title, votes, comment_count}) => {
-                   return<li key={article_id}>
-                       <Link to={`/articles/${article_id}`}>{title}</Link>
-                       <p>Comment Count {comment_count}</p>
-                       <VoteUpdater votes={votes} article_id={article_id}/>
-                       </li>
-               })}
-               
-            </ul>
-        );
-    }
+  }
+  fetchArticles=() =>{
+    const { topic } = this.props;
+    const {value} = this.state
+    api.getArticles(topic, value).then((articles) => {
+      this.setState({ articles, isLoading: false, err: '' });
+    })
+    .catch((err) => {
+        this.setState({err: err.response.data.msg, isLoading: false})
+    })
+  }
+  handleSortBy=(event)=>{
+    console.log(event.target.value)
+    this.setState({value: event.target.value})
+  }
+  
+  render() {
+    const { articles, isLoading, value, err } = this.state;
+    console.log(err, 'in render')
+    if (isLoading) return <Loader />;
+    if(err) return <ErrorDisplayer err={err}/>
+    return (
+      <ul>
+          <label>Sort Articles By:
+          <select value={value} onChange={this.handleSortBy}>
+            <option value="votes">Votes</option>
+            <option value="comment_count">Comment Count</option>
+            <option value="created_at">Date</option>
+          </select>
+          </label>
+        {articles.map(({ article_id, title, votes, comment_count }) => {
+          return (
+            <li key={article_id}>
+              <Link to={`/articles/${article_id}`}>{title}</Link>
+              <p>Comment Count {comment_count}</p>
+              <VoteUpdater votes={votes} article_id={article_id} />
+            </li>
+          );
+        })}
+      </ul>
+    );
+  }
 }
 
 export default Articles;

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class ErrorDisplayer extends Component {
-    render() {
-        return (
-            <div>
-               <h3>path not found</h3> 
-            </div>
-        );
-    }
-}
+const ErrorDisplayer = ({err}) => {
+    console.dir(err, 'in error displayer')
+    return (
+        <div>
+            <h3>{err ? err: 'Path Not Found'}</h3> 
+        </div>
+    );
+};
 
 export default ErrorDisplayer;
+

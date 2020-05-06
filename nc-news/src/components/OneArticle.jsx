@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import * as api from '../utils/api'
 import ArticleComments from './ArticleComments';
+import ErrorDisplayer from './ErrorDisplayer';
 
 class OneArticle extends Component {
     state = {
     article: {},
     isLoading: true,
-
+    err: '',
 }
 
 componentDidMount() {
@@ -20,14 +21,15 @@ fetchArticleById() {
         this.setState({article, isLoading: false});
     })
     .catch(err => {
-        console.dir(err)
+        this.setState({err: err.response.data.msg})
     })
 }
 
     render(){
-        const {article, isLoading} = this.state
+        const {article, isLoading, err} = this.state
         const {article_id, title, body, author, created_at} = article
         if(isLoading) return <p>Loading Article...</p>
+        if(err) return <ErrorDisplayer err={err}/>
         return (<div>
             <h3>{title}</h3>
             <p>Author: {author}</p>

@@ -7,10 +7,8 @@ export const getTopics = () => {
         })
 }
 
-export const getArticles = (topic, sort_by) => {
-
-    return axios.get('https://nc-news-joanna-kendall.herokuapp.com/api/articles', {params: {topic: topic,
-sort_by: 'votes'}, })
+export const getArticles = (topic, value) => {
+    return axios.get('https://nc-news-joanna-kendall.herokuapp.com/api/articles', {params: {topic: topic, sort_by: value}, })
     .then(({data: {articles}}) => {
             return articles
         })
@@ -32,12 +30,17 @@ export const getComments = (article_id) => {
 
 export const updateVotes = (article_id, voteChange) => {
     return axios.patch(`https://nc-news-joanna-kendall.herokuapp.com/api/articles/${article_id}`, 
-    {inc_vote: voteChange})
+    {inc_votes: voteChange})
 }
 
-export const addComment = (article_id) => {
-    return axios.post(`https://nc-news-joanna-kendall.herokuapp.com/api/articles/${article_id}/comments`)
-    .then(({data}) => {
-        return data;
+export const updateCommentVotes = (comment_id, voteChange) => {
+    return axios.patch(`https://nc-news-joanna-kendall.herokuapp.com/api/comments/${comment_id}`, 
+    {inc_votes: voteChange})
+}
+
+export const postComment = (article_id, username, body) => {
+    return axios.post(`https://nc-news-joanna-kendall.herokuapp.com/api/articles/${article_id}/comments`, {username, body})
+    .then(({data: {comment}}) => {
+        return comment
     })
 }
