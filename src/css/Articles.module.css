@@ -1,0 +1,11 @@
+.ul{
+    display: flex;
+    flex-direction: row;
+}
+.li{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: grey;
+    margin: 50px;
+}

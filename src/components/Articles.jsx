@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import { Link } from "@reach/router";
 import VoteUpdater from "./VoteUpdater";
 import ErrorDisplayer from "./ErrorDisplayer";
+import styled from '../css/Articles.module.css'
 
 class Articles extends Component {
   state = {
@@ -54,7 +55,7 @@ class Articles extends Component {
           </label>
         {articles.map(({ article_id, title, votes, comment_count }) => {
           return (
-            <li key={article_id}>
+            <li className={styled.li} key={article_id}>
               <Link to={`/articles/${article_id}`}>{title}</Link>
               <p>Comment Count {comment_count}</p>
               <VoteUpdater votes={votes} article_id={article_id} />

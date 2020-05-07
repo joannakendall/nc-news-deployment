@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as api from '../utils/api'
 import ArticleComments from './ArticleComments';
 import ErrorDisplayer from './ErrorDisplayer';
+import styled from '../css/OneArticle.module.css'
 
 class OneArticle extends Component {
     state = {
@@ -30,7 +31,7 @@ fetchArticleById() {
         const {article_id, title, body, author, created_at} = article
         if(isLoading) return <p>Loading Article...</p>
         if(err) return <ErrorDisplayer err={err}/>
-        return (<div>
+        return (<div className={styled.div}>
             <h3>{title}</h3>
             <p>Author: {author}</p>
             <p>{created_at}</p>
