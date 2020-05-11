@@ -1,19 +1,12 @@
 
-.div{
-    width: 300px;
-    height: 250px;
-    background-color: #b0d5c7cb;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
-    padding-top: 20px;
+.ul{
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-.div:hover{
-    box-shadow: 12px 12px 2px 1px gainsboro;
-}
+
 
 
 

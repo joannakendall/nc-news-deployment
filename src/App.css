@@ -11,8 +11,6 @@
 }
 
 .header{
-  margin-top: 40px;
-  margin-left:30px;
   grid-area: header; 
   background-color:  #b0d5c7cb;
 }
@@ -55,6 +53,22 @@ button {
 button:hover {
   background-color:#0000009e;
   color:#FFFFFF;
+}
+
+.slider {
+  margin-left: 200px;
+  margin-top: 100px;
+  width: 700px;
+  height: 300px;
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.slide {
+  width: 500px;
+  flex-shrink: 0;
+  height: 100%;
+  scroll-behavior: smooth;
 }
 
 
@@ -103,9 +117,10 @@ button:hover {
       }
     }
   }
-}
+} */
 
-@keyframes wave {
+
+/* @keyframes wave {
   50%,
   75% {
     transform: scale(2.5);
@@ -115,7 +130,7 @@ button:hover {
   100% {
     opacity: 0;
   }
-}
- */
+} */
+
 
 

@@ -4,7 +4,7 @@ import CommentVoteUpdater from "./CommentVoteUpdater";
 const OneComment = ({ comment_id, author, body, votes, user, deleteComment }) => {
     return (
         <ul>
-            <li key={comment_id}>
+            <li class='slide' key={comment_id}>
                 <p>Author:{author}</p>
                 <CommentVoteUpdater votes={votes} comment_id={comment_id}/>
                 <p>{body}</p>

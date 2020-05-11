@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import ErrorDisplayer from "./ErrorDisplayer";
 import DropDownList from "./DropDownList";
 import ArticleInfo from "./ArticleInfo";
+import styled from '../css/Articles.module.css'
 
 class Articles extends Component {
   state = {
@@ -45,13 +46,13 @@ class Articles extends Component {
       <>
       <DropDownList value={value} handleSortBy={this.handleSortBy}/>
       <p>Click on an article to read</p>
-      <div>
+      <ul className={styled.ul}>
         {articles.map(({ article_id, title, votes, comment_count, created_at }) => {
           return (
             <ArticleInfo article_id={article_id} title={title} votes={votes} comment_count={comment_count}  created_at={created_at}/>
           );
         })}
-      </div>
+      </ul>
       </>
     );
   }

@@ -42,7 +42,7 @@ class ArticleComments extends Component {
       <div>
         <p>Comments:</p>
         <CommentForm addComment={this.addComment} article_id={article_id} />
-        <ul>
+        <ul class='slider'>
           {comments.map(({ comment_id, author, body, votes }) => {
             return (
               <OneComment comment_id={comment_id} author={author} body={body} votes={votes} user={user} deleteComment={this.deleteComment}/>
