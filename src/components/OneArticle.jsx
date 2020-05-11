@@ -5,6 +5,7 @@ import ErrorDisplayer from './ErrorDisplayer';
 import styled from '../css/OneArticle.module.css'
 import VoteUpdater from './VoteUpdater';
 import Loader from './Loader';
+const moment = require('moment');
 
 class OneArticle extends Component {
     state = {
@@ -37,9 +38,9 @@ fetchArticleById() {
             <h3>{title}</h3>
             <p>Author: {author}</p>
             <VoteUpdater votes={votes} article_id={article_id}/>
-            <p>{created_at}</p>
+            <p>{moment(created_at).format('MMMM Do YYYY, h:mm:ss a')}</p>
             <p className={styled.p}>{body}</p>
-            <ArticleComments article_id={article_id} user={this.props.user}/>
+            <ArticleComments article_id={article_id} user={this.props.user} author={author}/>
         </div>
         )   
     }

@@ -7,15 +7,15 @@ class CommentForm extends Component {
     }
     handleSubmitComment = (event) => {
         event.preventDefault();
-        const{author, body} =this.state
-        const{article_id} = this.props
-        api.postComment(article_id, author, body)
+        const{body} =this.state
+        const{article_id, user} = this.props
+        api.postComment(article_id, user, body)
         .then((newComment) => {
             this.props.addComment(newComment)
         })
         .catch(err => console.dir(err))
 
-    this.setState({author: '', body: ''})
+    this.setState({body: ''})
     }
     handleChange =  (event) => {
         const {value, name} = event.target
@@ -26,7 +26,7 @@ class CommentForm extends Component {
         const {body} = this.state
         return (
             <form onSubmit={this.handleSubmitComment}>
-                <label>Comment:<input name='body' onChange={this.handleChange} value={body}/></label>
+                <label>Comment:<input name='body' onChange={this.handleChange} value={body} required/></label>
                 <button>Add Comment!</button>
             </form>
         );

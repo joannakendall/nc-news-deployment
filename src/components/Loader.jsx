@@ -1,5 +1,4 @@
 import React from 'react';
-//import styled from '../css/Loader.module.css'
 
 const Loader = () => {
     return (

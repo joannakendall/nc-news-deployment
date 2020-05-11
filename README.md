@@ -25,7 +25,7 @@ Install node dependencies, the dependencies can be found in the package.json fil
 
 Example:
 
-``` npm install @reach/router```
+``` npm install ```
 
 ## Deployment
 

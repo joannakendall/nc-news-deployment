@@ -3,6 +3,7 @@ import * as api from "../utils/api";
 import CommentForm from "./CommentForm";
 import OneComment from "./OneComment";
 import Loader from "./Loader";
+import styled from '../css/Comments.module.css'
 
 
 class ArticleComments extends Component {
@@ -36,13 +37,13 @@ class ArticleComments extends Component {
   };
   render() {
     const { comments, isLoading } = this.state;
-    const { article_id, user } = this.props;
+    const { article_id, user, author } = this.props;
     if(isLoading) return <Loader/>
     return (
       <div>
         <p>Comments:</p>
-        <CommentForm addComment={this.addComment} article_id={article_id} />
-        <ul class='slider'>
+        <CommentForm addComment={this.addComment} article_id={article_id} author={author} user={user}/>
+        <ul className={styled.ul}>
           {comments.map(({ comment_id, author, body, votes }) => {
             return (
               <OneComment comment_id={comment_id} author={author} body={body} votes={votes} user={user} deleteComment={this.deleteComment}/>
