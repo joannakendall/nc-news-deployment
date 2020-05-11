@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import * as api from "../utils/api";
 import CommentForm from "./CommentForm";
-import CommentVoteUpdater from "./CommentVoteUpdater";
+import OneComment from "./OneComment";
+import Loader from "./Loader";
 
 
 class ArticleComments extends Component {
   state = {
     comments: [],
+    isLoading: true
   };
   componentDidMount() {
     this.fetchComments();
@@ -33,8 +35,9 @@ class ArticleComments extends Component {
     });
   };
   render() {
-    const { comments } = this.state;
+    const { comments, isLoading } = this.state;
     const { article_id, user } = this.props;
+    if(isLoading) return <Loader/>
     return (
       <div>
         <p>Comments:</p>
@@ -42,20 +45,7 @@ class ArticleComments extends Component {
         <ul>
           {comments.map(({ comment_id, author, body, votes }) => {
             return (
-              <li key={comment_id}>
-                <p>Author:{author}</p>
-                <CommentVoteUpdater votes={votes} comment_id={comment_id}/>
-                <p>{body}</p>
-                <button
-                  onClick={() => {
-                    this.deleteComment(comment_id);
-                  }}
-                  comment_id={comment_id}
-                  disabled={author !== user}
-                >
-                  Delete Comment!
-                </button>
-              </li>
+              <OneComment comment_id={comment_id} author={author} body={body} votes={votes} user={user} deleteComment={this.deleteComment}/>
             );
           })}
         </ul>

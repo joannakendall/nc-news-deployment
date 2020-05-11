@@ -1,5 +1,7 @@
-.li{
-    display: flex;
-    flex-direction: column;
-    background-color: teal;
+.p{
+    background-color:  #b0d5c7cb;
+    box-shadow: 12px 12px 2px 1px gainsboro;
+    width: 60%;
+    margin-left: 15%;
+    padding: 20px;
 }

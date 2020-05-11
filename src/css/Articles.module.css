@@ -1,11 +1,17 @@
-.ul{
-    display: flex;
-    flex-direction: row;
+
+.div{
+    width: 300px;
+    height: 250px;
+    background-color: #b0d5c7cb;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 20px;
 }
-.li{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    background-color: rgba(108, 134, 220, 0.797);
-    margin: 50px;
+
+.div:hover{
+    box-shadow: 12px 12px 2px 1px gainsboro;
 }
+

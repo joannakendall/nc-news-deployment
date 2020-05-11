@@ -1,9 +1,10 @@
 import React from 'react';
+//import styled from '../css/Loader.module.css'
 
 const Loader = () => {
     return (
         <div>
-            Please wait, the articles will be displayed shortly!
+            <p>Loading...</p>
         </div>
     );
 };

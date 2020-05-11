@@ -1,30 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+
 .App {
   text-align: center;
   display: grid;
   grid-template-areas: 'header header' 'nav main';
-  grid-template-columns: 100px auto;
-  grid-template-rows: 100px auto;
-  background-color:gainsboro;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 1fr 50fr auto;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .header{
-  grid-area:header;
+  margin-top: 40px;
+  margin-left:30px;
+  grid-area: header; 
+  border: gainsboro;
 }
 
 .nav {
   grid-area: nav;
   display: flex;
   flex-direction: column;
+  margin-top: 55px;
 }
 
 .main {
   grid-area: main;
-
+  margin-right: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 ul {
   list-style-type: none;
 }
+
+button {
+  display:inline-block;
+  padding:0.35em 1.2em;
+  border:0.1em solid #FFFFFF;
+  margin:0 0.3em 0.3em 0;
+  border-radius:0.12em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:700;
+  color:rgb(12, 12, 12);
+  text-align:center;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background-color:#0000009e;
+  color:#FFFFFF;
+}
+
 
 @media only screen and (max-width: 600px) {
   .App {
@@ -32,45 +63,58 @@ ul {
     flex-direction: column;
   }
   .nav{
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
   }
 }
 
-
-/* .App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* .loading {
+  $colors: #7ef9ff, #89cff0, #4682b4, #0f52ba, #000080;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+  animation-delay: 1s;
 
-.App-link {
-  color: #61dafb;
-}
+  .dot {
+    position: relative;
+    width: 2em;
+    height: 2em;
+    margin: 0.8em;
+    border-radius: 50%;
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background: inherit;
+      border-radius: inherit;
+      animation: wave 2s ease-out infinite;
+    }
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        background: nth($colors, $i);
+
+        &::before {
+          animation-delay: $i * 0.2s;
+        }
+      }
+    }
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@keyframes wave {
+  50%,
+  75% {
+    transform: scale(2.5);
+  }
+
+  80%,
+  100% {
+    opacity: 0;
   }
 }
  */
+
+

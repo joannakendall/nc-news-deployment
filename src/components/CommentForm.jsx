@@ -3,7 +3,6 @@ import * as api from '../utils/api'
 
 class CommentForm extends Component {
     state = {
-        author:'',
         body:'',
     }
     handleSubmitComment = (event) => {
@@ -24,10 +23,9 @@ class CommentForm extends Component {
     }
     
     render() {
-        const {author, body} = this.state
+        const {body} = this.state
         return (
             <form onSubmit={this.handleSubmitComment}>
-                <label>Username:<input name='author' onChange={this.handleChange} value={author}/></label>
                 <label>Comment:<input name='body' onChange={this.handleChange} value={body}/></label>
                 <button>Add Comment!</button>
             </form>

@@ -1,10 +1,11 @@
 import React from 'react';
+//import styled from '../css/Header.module.css'
 
-const Header = () => {
+const Header = ({user}) => {
     return (
         <header className='header'>
             <h1>NORTHCODERS NEWS!</h1>
-            <p>Click on an article to read</p>
+            <h2>You are logged in as {user}</h2>
         </header>
     );
 };

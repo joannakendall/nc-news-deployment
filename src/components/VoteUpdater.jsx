@@ -17,15 +17,10 @@ class VoteUpdater extends Component {
         );
     }
     handleVote = (voteChange) => {
-        /*
-            to make the api request with 1 or -1 (voteChange)
-        */
         const {article_id} = this.props;
-        // api.updateVotes(article_id, voteChange).then(() => {
             this.setState((currentState) => {
                 return { voteDifference: currentState.voteDifference + voteChange}
             })
-        // });
         api.updateVotes(article_id, voteChange).catch(() => {
             this.setState((currentState) => {
                 return { voteDifference: currentState.voteDifference - voteChange}
